@@ -1,0 +1,64 @@
+{
+  "name": "docker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@apla/clickhouse": "^1.5.3",
+    "config": "^1.30.0",
+    "csv-parse": "^2.5.0",
+    "csv-stringify": "^3.1.1",
+    "dotenv": "^6.0.0",
+    "lodash": "^4.17.10",
+    "pumpify": "^1.5.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.17.5",
+    "rimraf": "^2.6.2"
+  },
+  "scripts": {
+    "build": "rimraf dist && babel src -d dist",
+    "start": "node dist/index.js",
+    "watch": "nodemon src/index.js"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": true
+          },
+          "useBuiltins": true
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "transform-object-rest-spread",
+        {
+          "useBuiltIns": true
+        }
+      ]
+    ],
+    "sourceMaps": "inline"
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "js": "babel-node"
+    },
+    "watch": [
+      "src"
+    ],
+    "ignore": [
+      "*.test.js"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  }
+}
