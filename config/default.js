@@ -7,16 +7,12 @@ module.exports = {
         database: 'test',
       },
     },
-  },
-  importFile: {
     hardImport: false,
     tableName: 'profiles',
+  },
+  importFile: {
     path: 'samples/purchases_sample.csv',
-    fileFormatter: {
-      inputDelimiter: ';',
-      outputDelimiter: '\t',
-    },
-    format: 'TSV',
+    fileDelimiter: ';',
     fieldsMap: {
       purchase_id: 'String',
       customer_id: 'String',
@@ -24,5 +20,22 @@ module.exports = {
       timestamp: 'DateTime',
       iso_8601: 'String',
     },
+  },
+  importDB: {
+    config: {
+      host: 'localhost',
+      user: 'root',
+      password: 'pass',
+      database: 'test',
+      typeCast: true,
+    },
+    fieldsMap: {
+      purchase_id: 'String',
+      customer_id: 'String',
+      value: 'String',
+      timestamp: 'DateTime',
+      iso_8601: 'String',
+    },
+    query: '',
   },
 };
